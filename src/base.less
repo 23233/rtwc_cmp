@@ -1,0 +1,119 @@
+/* purgecss start ignore */
+@tailwind base;
+
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+
+// 同时引入tailwind和ant ant的图标对齐会出现问题
+@layer base {
+  svg {
+    vertical-align: initial;
+  }
+}
+
+
+.icon-mb {
+  margin-bottom: 3px;
+}
+
+// 弹窗背景
+.bg-mask {
+  overflow: hidden;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    content: '';
+    pointer-events: none;
+  }
+}
+
+.bg-mask-normal {
+  &:before {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.bg-mask-small {
+  &:before {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.bg-mask-less {
+  &:before {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.z-45 {
+  z-index: 45;
+}
+
+.z-60 {
+  z-index: 60;
+}
+
+.z-70 {
+  z-index: 70;
+}
+
+.z-80 {
+  z-index: 80;
+}
+
+.z-90 {
+  z-index: 90;
+}
+
+.z-100 {
+  z-index: 100;
+}
+
+.z-200 {
+  z-index: 200;
+}
+
+.z-300 {
+  z-index: 300;
+}
+
+.z-normal {
+  z-index: 500;
+}
+
+.z-max {
+  z-index: 9999;
+}
+
+// 按钮点击特效
+.btn_scale {
+  transition: all 0.12s ease-out;
+
+  &:focus,
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.btn_scale_big {
+  transition: all 0.12s ease-out;
+
+  &:focus,
+  &:active {
+    transform: scale(1.35);
+  }
+}
+
+.no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
