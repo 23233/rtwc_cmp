@@ -43,11 +43,15 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
   "dependencies": {
-    "react": "^17.0.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@lottiefiles/react-lottie-player": "^3.4.4",
     "@rtwc/comm": "^1.0.4",
     "@tailwindcss/postcss7-compat": "^2.2.17",
@@ -67,7 +71,6 @@
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "rc-progress": "^3.2.4",
-    "react-dom": "^18.0.0",
     "react-easy-crop": "^4.1.4",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "viewerjs": "^1.10.5",

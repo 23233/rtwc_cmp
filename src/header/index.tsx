@@ -1,5 +1,5 @@
-import React, {ReactNode, useMemo} from 'react';
-import {LeftOutlined} from '@ant-design/icons';
+import React, { ReactNode, useMemo } from 'react';
+import BackSvg from './back.svg';
 
 export interface HeaderAttr {
   title: string;
@@ -13,11 +13,11 @@ export interface HeaderAttr {
 }
 
 const Header: React.FC<HeaderAttr> = ({
-                                        children,
-                                        showShare = true,
-                                        truncate = false,
-                                        ...props
-                                      }) => {
+  children,
+  showShare = true,
+  truncate = false,
+  ...props
+}) => {
   const backFunc = (e: React.MouseEvent) => {
     if (props?.onBack) {
       props.onBack(e);
@@ -35,15 +35,14 @@ const Header: React.FC<HeaderAttr> = ({
     return (
       <React.Fragment>
         <div
-          className="w-12 flex-shrink-0 text-center text-xs text-blue-400 btn_scale flex items-center"
+          className="w-12 flex-shrink-0 text-center text-xs text-blue-400 btn_scale flex items-center cursor-pointer"
           onClick={(e) => backFunc(e)}
         >
-          <LeftOutlined style={{fontSize: 18}}/> 返回
+          <img src={BackSvg} alt="back" style={{ width: 20, height: 20 }} />
+          <p>返回</p>
         </div>
         <div
-          className={`text-center text-lg ${
-            truncate ? 'truncate' : ''
-          } flex-grow`}
+          className={`text-center text-lg ${truncate ? 'truncate' : ''} flex-grow`}
           onClick={(e) => props?.onTitle && props.onTitle(e)}
         >
           {props.title}
@@ -52,15 +51,13 @@ const Header: React.FC<HeaderAttr> = ({
           {children ||
             (showShare ? (
               <div
-                className={
-                  'btn_scale w-10 text-base text-center text-blue-400 '
-                }
+                className={'btn_scale w-10 text-base text-center text-blue-400 '}
                 onClick={shareFunc}
               >
                 分享
               </div>
             ) : (
-              <div className={'w-10'}/>
+              <div className={'w-10'} />
             ))}
         </div>
       </React.Fragment>
@@ -71,24 +68,16 @@ const Header: React.FC<HeaderAttr> = ({
     <React.Fragment>
       <div
         className={`items-center header-warp-height ${
-          props?.fixed
-            ? 'fixed top-0 left-0 w-full z-normal bg-transparent'
-            : 'relative'
+          props?.fixed ? 'fixed top-0 left-0 w-full z-normal bg-transparent' : 'relative'
         }`}
       >
         <React.Fragment>
           {props?.fixed ? (
-            <div
-              className={
-                'flex justify-center items-center p-2 shadow-md relative bg-white'
-              }
-            >
+            <div className={'flex justify-center items-center p-2 shadow-md relative bg-white'}>
               {contentRender}
             </div>
           ) : (
-            <div className="flex justify-center items-center p-2 ">
-              {contentRender}
-            </div>
+            <div className="flex justify-center items-center p-2 ">{contentRender}</div>
           )}
         </React.Fragment>
       </div>
