@@ -1,5 +1,5 @@
 import React, { CSSProperties, useMemo, useRef } from 'react';
-import {  Spin } from '@rtwc/cmp';
+import { Spin } from '@rtwc/cmp';
 import { useRipple } from '@rtwc/comm';
 
 export interface BtnAttr {
@@ -7,15 +7,7 @@ export interface BtnAttr {
   size?: 'large' | 'small' | 'default' | 'less';
   icon?: React.ReactNode;
   iconCls?: string;
-  type?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info'
-    | 'white'
-    | 'dark';
+  type?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'white' | 'dark';
   disable?: boolean;
   block?: boolean;
   onClick?: (e: React.MouseEvent) => void;
