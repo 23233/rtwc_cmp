@@ -12,10 +12,7 @@ export default defineConfig({
   // base和publicPath 主要作用于github page访问
   base: '/' + storeName,
   publicPath: '/' + storeName + '/', // 打包文件时，引入地址生成 publicPath/xxx.js
-  extraPostCSSPlugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
-  ],
-  sass: {},
 
+  extraPostCSSPlugins: [require('tailwindcss'), require('autoprefixer')],
+  sass: {},
 });

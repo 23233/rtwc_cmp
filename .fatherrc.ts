@@ -10,4 +10,5 @@ export default {
     },
   },
   extractCSS: true,
+  runtimeHelpers: true,
 } as IBundleOptions;
