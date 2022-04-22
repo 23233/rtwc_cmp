@@ -12,16 +12,4 @@ nav:
 
 <code src="./demo.tsx" />
 
-
-### 参数
-
-```ts
-interface HorizontalTabAttr {
-  current?: tabItem;
-  defaultCurrent?: tabItem;
-  items: Array<tabItem>;
-  extra?: React.ReactNode;
-  onReplaceClick?: (item: tabItem) => void; // 当前选中点击
-  onChange?: (item: tabItem) => void;
-}
-```
+<API src="./horizontally.tsx"></API>

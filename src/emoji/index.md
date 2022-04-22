@@ -13,11 +13,4 @@ nav:
 <code src="./demo.tsx" />
 
 
-### 参数
-
-```ts
-interface EmojiAttr {
-  onSelect: (params: EmojiItem) => void;
-  showBorder?: boolean;
-}
-```
+<API src="./emoji.tsx"></API>

@@ -12,21 +12,5 @@ nav:
 
 <code src="./demo.tsx" />
 
+<API src="./loadingImg.tsx"></API>
 
-### 参数
-
-```ts
-interface LoadingImg {
-  src: string;
-  origin?: string; // 原图
-  alt?: string;
-  className?: string;
-  style?: CSSProperties;
-  useBk?: boolean; // 使用背景模式
-  bgSize?:string
-  bgPosition?: string; // 背景定位
-  loadingMinSize?: number;
-  loadingClassName?: string;
-  onClick?: (e: React.MouseEvent) => void;
-}
-```

@@ -16,12 +16,4 @@ nav:
 
 <code src="./demo.tsx" />
 
-
-### 参数
-
-```ts
-interface CropImgAttr {
-  src: string;
-  onSuccess?: (file: File) => void;
-}
-```
+<API src="./crop.tsx"></API>

@@ -12,18 +12,4 @@ nav:
 
 <code src="./demo.tsx" />
 
-
-### 参数
-
-```ts
-interface HeaderAttr {
-  title: string;
-  onBack?: (e: React.MouseEvent) => void;
-  onTitle?: (e: React.MouseEvent) => void;
-  onShare?: () => void;
-  truncate?: boolean;
-  children?: ReactNode;
-  showShare?: boolean;
-  fixed?: boolean;
-}
-```
+<API src="./index.tsx"></API>

@@ -12,16 +12,6 @@ nav:
 
 <code src="./demo.tsx" />
 
+<API src="./statusResult.tsx"></API>
 
-### 参数
 
-```ts
-interface StatusCmpParams {
-  uri: string;
-  title: string | React.ReactElement;
-  text?: string | React.ReactElement;
-  className?: string;
-  style?: CSSProperties;
-  children?: React.ReactNode;
-}
-```

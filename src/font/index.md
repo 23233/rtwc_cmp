@@ -12,14 +12,4 @@ nav:
 
 <code src="./demo.tsx" />
 
-## 参数
-```ts
-interface SimpleTitleAttr {
-  text: string | React.ReactNode;
-  desc?: string;
-  descOnClick?: () => void;
-  children?: React.ReactNode;
-  onClick?: (e: React.MouseEvent) => void;
-  className?: string;
-}
-```
+<API src="./title.tsx"></API>

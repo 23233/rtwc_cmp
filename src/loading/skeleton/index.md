@@ -12,16 +12,4 @@ nav:
 
 <code src="./demo.tsx" />
 
-
-### 参数
-
-```ts
-interface SkeletonAttr {
-  loading?: boolean;
-  type?: 'page' | 'avatar' | 'article';
-  line?: number;
-  showPd?: boolean;
-  className?: string;
-  [key: string]: any;
-}
-```
+<API src="./skeleton.tsx"></API>

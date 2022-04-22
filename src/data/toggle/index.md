@@ -13,18 +13,4 @@ nav:
 <code src="./demo.tsx" />
 
 
-### 参数
-
-```ts
-interface ToggleItem {
-  name: string;
-  [key: string]: any;
-}
-
-interface ToggleAttr {
-  items: Array<ToggleItem>;
-  onChange?: (params: ToggleItem) => void;
-  size?: 'normal' | 'big' | 'small';
-  defaultSelect?: ToggleItem;
-}
-```
+<API src="./index.tsx"></API>

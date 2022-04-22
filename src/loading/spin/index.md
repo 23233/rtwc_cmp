@@ -13,13 +13,4 @@ nav:
 <code src="./demo.tsx" />
 
 
-### 参数
-
-```ts
-interface SpinAttr {
-  loading?: boolean;
-  minHeight?: number;
-
-  [key: string]: any;
-}
-```
+<API src="./spin.tsx"></API>
