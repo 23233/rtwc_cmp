@@ -2,6 +2,7 @@ import React, { ReactNode, useMemo } from 'react';
 
 export interface HeaderAttr {
   title: string;
+  className?: string;
   onBack?: (e: React.MouseEvent) => void;
   onTitle?: (e: React.MouseEvent) => void;
   onShare?: () => void;
@@ -9,12 +10,15 @@ export interface HeaderAttr {
   children?: ReactNode;
   showShare?: boolean;
   fixed?: boolean;
+  zIndex?: number;
 }
 
 const Header: React.FC<HeaderAttr> = ({
   children,
   showShare = true,
   truncate = false,
+  zIndex = 500,
+  className = '',
   ...props
 }) => {
   const backFunc = (e: React.MouseEvent) => {
@@ -34,7 +38,7 @@ const Header: React.FC<HeaderAttr> = ({
     return (
       <React.Fragment>
         <div
-          className="w-12 flex-shrink-0 text-center text-xs text-blue-400 btn_scale flex items-center cursor-pointer"
+          className="w-12 flex-shrink-0 text-center text-xs text-blue-400 transition-all hover:scale-95 active:scale-95 flex items-center cursor-pointer"
           onClick={(e) => backFunc(e)}
         >
           <img
@@ -54,7 +58,9 @@ const Header: React.FC<HeaderAttr> = ({
           {children ||
             (showShare ? (
               <div
-                className={'btn_scale w-10 text-base text-center text-blue-400 '}
+                className={
+                  'transition-all hover:scale-95 active:scale-95 w-10 text-base text-center text-blue-400 '
+                }
                 onClick={shareFunc}
               >
                 分享
@@ -70,9 +76,12 @@ const Header: React.FC<HeaderAttr> = ({
   return (
     <React.Fragment>
       <div
-        className={`items-center header-warp-height ${
-          props?.fixed ? 'fixed top-0 left-0 w-full z-normal bg-transparent' : 'relative'
-        }`}
+        className={`items-center ${
+          props?.fixed ? 'fixed top-0 left-0 w-full bg-transparent' : 'relative'
+        } ${className}`}
+        style={{
+          zIndex: props?.fixed ? zIndex : 0,
+        }}
       >
         <React.Fragment>
           {props?.fixed ? (

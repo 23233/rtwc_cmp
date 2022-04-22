@@ -1,5 +1,6 @@
 import React from 'react';
 import { Line, ProgressProps } from 'rc-progress';
+import './mask.less';
 
 export interface MaskLoadingAttr extends ProgressProps {
   msg: string;

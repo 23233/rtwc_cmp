@@ -1,4 +1,5 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import './index.less';
 
 export interface TabItem {
   id: string | number;
@@ -16,17 +17,16 @@ export interface HorizontalTabAttr {
   onReplaceClick?: (item: TabItem) => void; // 当前选中点击
   onChange?: (item: TabItem) => void;
   linkRender?: boolean; // 如果有这个则渲染为A标签且跳过click事件
-
 }
 
 // 可横向滚动的tab
 const HorizontallyTabs: React.FC<HorizontalTabAttr> = ({
-                                                         current,
-                                                         items,
-                                                         defaultCurrent,
-                                                         linkRender = false,
-                                                         ...props
-                                                       }) => {
+  current,
+  items,
+  defaultCurrent,
+  linkRender = false,
+  ...props
+}) => {
   const [value, setValue] = useState<TabItem>();
   const warpRef = useRef<HTMLDivElement>(null);
 
@@ -47,7 +47,7 @@ const HorizontallyTabs: React.FC<HorizontalTabAttr> = ({
     if (defaultCurrent) {
       setValue(defaultCurrent);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     setValue(current);
@@ -55,7 +55,6 @@ const HorizontallyTabs: React.FC<HorizontalTabAttr> = ({
       gotoItem(current?.id || '');
     }
   }, [current]);
-
 
   const onClick = (item: TabItem) => {
     if (value?.id === item.id) {
@@ -66,39 +65,33 @@ const HorizontallyTabs: React.FC<HorizontalTabAttr> = ({
     setValue(item);
   };
 
-
-  const renderItem = useCallback((d: TabItem) => {
-    const active = value?.id === d.id;
-    return (
-      <React.Fragment>
-        <div
-          className={`transition-all h-7 text-base flex justify-center items-center ${
-            active ? 'text-black font-bold' : 'text-gray-400'
-          }`}
-        >
-          {d?.icon}
-          <p>{d.label}</p>
-
-        </div>
-        {d?.desc && (
-          <p
-            className={`text-xs ${
-              active ? 'text-black opacity-80' : 'text-gray-200'
+  const renderItem = useCallback(
+    (d: TabItem) => {
+      const active = value?.id === d.id;
+      return (
+        <React.Fragment>
+          <div
+            className={`transition-all h-7 text-base flex justify-center items-center ${
+              active ? 'text-black font-bold' : 'text-gray-400'
             }`}
           >
-            {d.desc}
-          </p>
-        )}
-      </React.Fragment>
-    );
-  }, [value]);
+            {d?.icon}
+            <p>{d.label}</p>
+          </div>
+          {d?.desc && (
+            <p className={`text-xs ${active ? 'text-black opacity-80' : 'text-gray-200'}`}>
+              {d.desc}
+            </p>
+          )}
+        </React.Fragment>
+      );
+    },
+    [value],
+  );
 
   return (
     <div className="relative flex">
-      <div
-        className="flex overflow-x-auto flex-grow items-center no-scrollbar"
-        ref={warpRef}
-      >
+      <div className="flex overflow-x-auto flex-grow items-center no-scrollbar" ref={warpRef}>
         {items?.map((d) => {
           if (linkRender) {
             return (
@@ -128,9 +121,7 @@ const HorizontallyTabs: React.FC<HorizontalTabAttr> = ({
           );
         })}
       </div>
-      {props?.extra ? (
-        <div className="flex-shrink-0 flex items-center">{props.extra}</div>
-      ) : null}
+      {props?.extra ? <div className="flex-shrink-0 flex items-center">{props.extra}</div> : null}
     </div>
   );
 };

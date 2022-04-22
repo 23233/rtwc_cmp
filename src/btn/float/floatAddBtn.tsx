@@ -6,6 +6,7 @@ export interface FabBtnAttr {
   icon?: React.ReactNode;
   title?: string;
   className?: string;
+  zIndex?: number;
 }
 
 // 浮动按钮 用于新增
@@ -14,10 +15,11 @@ const FloatBtn: React.FC<FabBtnAttr> = ({
   className = 'bg-red-600 text-white',
   icon,
   title = '新增',
+  zIndex = 100,
 }) => {
   return (
     <React.Fragment>
-      <div className="fixed z-100 right-2 bottom-10">
+      <div className="fixed right-2 bottom-10" style={{ zIndex }}>
         <RippleView>
           <button
             className={`w-12 h-12 rounded-full shadow  ${className || ''}`}

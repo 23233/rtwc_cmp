@@ -2,11 +2,12 @@ import React, { useCallback, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './cropImage';
-import {Area} from "react-easy-crop/types";
+import { Area } from 'react-easy-crop/types';
 
 export interface CropImgAttr {
   src: string;
   onSuccess?: (file: File) => void;
+  zIndex?: number;
 }
 
 function dataURLtoFile(data: string, filename: string): File {
@@ -25,7 +26,7 @@ function dataURLtoFile(data: string, filename: string): File {
   });
 }
 
-const DropRoundImg: React.FC<CropImgAttr> = ({ src, ...props }) => {
+const DropRoundImg: React.FC<CropImgAttr> = ({ src, zIndex = 9999, ...props }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
@@ -33,7 +34,7 @@ const DropRoundImg: React.FC<CropImgAttr> = ({ src, ...props }) => {
   const [croppedImage, setCroppedImage] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
 
-  const onCropComplete = useCallback((croppedArea:Area, cropPixel:Area) => {
+  const onCropComplete = useCallback((croppedArea: Area, cropPixel: Area) => {
     setCroppedAreaPixels(cropPixel);
   }, []);
 
@@ -62,7 +63,7 @@ const DropRoundImg: React.FC<CropImgAttr> = ({ src, ...props }) => {
   }, [croppedImage]);
 
   return (
-    <div className="fixed left-0 top-0 w-full h-full z-max bg-white">
+    <div className="fixed left-0 top-0 w-full h-full bg-white" style={{ zIndex }}>
       <Cropper
         image={src}
         crop={crop}
@@ -77,14 +78,14 @@ const DropRoundImg: React.FC<CropImgAttr> = ({ src, ...props }) => {
         onCropComplete={onCropComplete}
         onZoomChange={setZoom}
       />
-      <div className={'absolute left-0 top-6 w-full z-max text-center'}>
+      <div className={'absolute left-0 top-6 w-full text-center'} style={{ zIndex }}>
         <h4 className="text-2xl text-white">裁剪头像</h4>
         <p className="text-base text-gray-200">拖动背景图选择头像部分</p>
       </div>
 
-      <div className={'absolute left-0 bottom-4 w-full z-max text-center '}>
+      <div className={'absolute left-0 bottom-4 w-full text-center '} style={{ zIndex }}>
         <button
-          className="bg-green-400 text-white text-lg px-16 rounded py-2 btn_scale"
+          className="bg-green-400 text-white text-lg px-16 rounded py-2 transition-all hover:scale-95 active:scale-95"
           onClick={showCroppedImage}
           disabled={loading}
         >
