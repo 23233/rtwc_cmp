@@ -1,5 +1,4 @@
 import React, { ReactNode, useMemo } from 'react';
-import BackSvg from './back.svg';
 
 export interface HeaderAttr {
   title: string;
@@ -38,7 +37,11 @@ const Header: React.FC<HeaderAttr> = ({
           className="w-12 flex-shrink-0 text-center text-xs text-blue-400 btn_scale flex items-center cursor-pointer"
           onClick={(e) => backFunc(e)}
         >
-          <img src={BackSvg} alt="back" style={{ width: 20, height: 20 }} />
+          <img
+            src="data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNDggNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiI+DQogIDxwYXRoIGZpbGw9IiMyMTk2RjMiIGQ9Ik0zMC45IDQzTDM0IDM5LjkgMTguMSAyNCAzNCA4LjEgMzAuOSA1IDEyIDI0eiIgLz4NCjwvc3ZnPg=="
+            alt="back"
+            style={{ width: 20, height: 20 }}
+          />
           <p>返回</p>
         </div>
         <div

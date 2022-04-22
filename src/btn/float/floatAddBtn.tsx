@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { RippleView } from '@rtwc/comm';
-import PlusSvg from './plus_math.svg';
 
 export interface FabBtnAttr {
   onClick?: (e: React.MouseEvent) => void;
@@ -29,7 +28,9 @@ const FloatBtn: React.FC<FabBtnAttr> = ({
               icon
             ) : (
               <img
-                src={PlusSvg}
+                src={
+                  'data:image/svg+xml;base64,77u/PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDQ4IDQ4Ij4KICA8cGF0aCBmaWxsPSIjZmZmZmZmIiBkPSJNMjEgNkgyNlY0MUgyMXoiIC8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTYgMjFINDFWMjZINnoiIC8+Cjwvc3ZnPgo='
+                }
                 alt="add"
                 style={{ width: 24, height: 24 }}
                 className={'mx-auto'}
