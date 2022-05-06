@@ -1,4 +1,4 @@
-import React, { CSSProperties, useRef } from 'react';
+import React, { CSSProperties, useEffect, useRef } from 'react';
 import classnames from 'classnames';
 import { useRipple } from '@rtwc/comm';
 import './index.less';
@@ -30,7 +30,7 @@ const load = (url: string, id: string): void => {
   document.body.appendChild(scriptElem);
 };
 
-loadIconUrl('https://at.alicdn.com/t/font_2506983_bxxb13sody8.js');
+let mount = false;
 
 export const ChangeIconUrl = (newUrl: string): void => {
   loadIconUrl(newUrl);
@@ -52,6 +52,13 @@ const Icon: React.FC<IconAttr> = ({
 }) => {
   const refs = useRef<any>();
   useRipple(ripple ? refs : undefined);
+
+  useEffect(() => {
+    if (!mount) {
+      loadIconUrl('https://at.alicdn.com/t/font_2506983_bxxb13sody8.js');
+      mount = true;
+    }
+  }, []);
 
   return (
     <span style={{ fontSize: size }} ref={refs} onClick={onClick} title={title}>
