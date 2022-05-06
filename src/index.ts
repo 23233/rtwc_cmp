@@ -48,5 +48,8 @@ export { default as StatusResult } from './animation/lottie/statusResult';
 export type { IconAttr } from './icon/index';
 export { default as Icons, ChangeIconUrl, AddIconUrl } from './icon/index';
 
+// 距离相关
+export { getDistanceOfMetre, getDistance, parseToKm } from './tools/distance';
+
 export { default as Cwal } from './swal/cwal';
 export { default as Toast } from './swal/toast';
