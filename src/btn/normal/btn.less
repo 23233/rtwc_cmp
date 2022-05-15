@@ -1,0 +1,207 @@
+.cmp_btn {
+  @apply transition-all;
+  &.big {
+    @apply py-3 px-4 text-sm;
+  }
+  &.large {
+    @apply py-4 px-5 text-base;
+  }
+
+  &.small {
+    @apply py-2 px-3 text-sm;
+  }
+
+  &.little {
+    @apply py-1 px-2 text-sm;
+  }
+
+  &.less {
+    @apply py-1 px-2 text-xs;
+  }
+
+  &.block {
+    @apply w-full;
+  }
+
+  &.disable {
+    @apply cursor-not-allowed;
+  }
+
+  &.icon {
+    @apply flex items-center;
+  }
+
+  &.filled {
+    @apply focus:outline-none text-white rounded-md hover:shadow-lg;
+
+    &.primary {
+      @apply bg-blue-500 hover:bg-blue-600;
+    }
+
+    &.secondary {
+      @apply bg-gray-500 hover:bg-gray-600;
+    }
+    &.success {
+      @apply bg-green-500 hover:bg-green-600;
+    }
+    &.danger {
+      @apply bg-red-500 hover:bg-red-600;
+    }
+    &.warning {
+      @apply bg-yellow-500 hover:bg-yellow-600;
+    }
+    &.white {
+      @apply focus:outline-none text-black rounded-md hover:shadow-lg bg-white hover:bg-blue-400;
+    }
+    &.info {
+      @apply bg-purple-500 hover:bg-purple-600;
+    }
+    &.dark {
+      @apply bg-gray-700 hover:bg-gray-900;
+    }
+  }
+  &.border {
+    @apply focus:outline-none  rounded-md border;
+
+    &.primary {
+      @apply text-blue-600 border-blue-600 hover:bg-blue-50;
+    }
+
+    &.secondary {
+      @apply text-gray-600 border-gray-600 hover:bg-gray-50;
+    }
+    &.success {
+      @apply text-green-600 border-green-600 hover:bg-green-50;
+    }
+    &.danger {
+      @apply text-red-600 border-red-600 hover:bg-red-50;
+    }
+    &.warning {
+      @apply text-yellow-600 border-yellow-600 hover:bg-yellow-50;
+    }
+    &.white {
+      @apply text-black border-white hover:bg-blue-400;
+    }
+    &.info {
+      @apply text-purple-600 border-purple-600 hover:bg-purple-50;
+    }
+    &.dark {
+      @apply text-gray-800 border-gray-800 hover:bg-gray-200;
+    }
+  }
+  &.flat {
+    @apply focus:outline-none  rounded-md;
+
+    &.primary {
+      @apply text-blue-600 hover:bg-blue-100;
+    }
+
+    &.secondary {
+      @apply text-gray-600 hover:bg-gray-100;
+    }
+    &.success {
+      @apply text-green-600 hover:bg-green-100;
+    }
+    &.danger {
+      @apply text-red-600 hover:bg-red-100;
+    }
+    &.warning {
+      @apply text-yellow-600 hover:bg-yellow-50;
+    }
+    &.white {
+    }
+
+    &.info {
+      @apply text-purple-600 hover:bg-purple-100;
+    }
+    &.dark {
+      @apply text-gray-900 hover:bg-gray-200;
+    }
+  }
+  &.gradient {
+    @apply focus:outline-none text-white rounded-md transform bg-gradient-to-r hover:scale-105 duration-75;
+
+    &.primary {
+      @apply from-blue-400 to-blue-600;
+    }
+
+    &.secondary {
+      @apply from-gray-400 to-gray-600;
+    }
+    &.success {
+      @apply from-green-400 to-green-600;
+    }
+    &.danger {
+      @apply from-red-400 to-red-600;
+    }
+    &.warning {
+      @apply from-yellow-400 to-yellow-600;
+    }
+    &.white {
+      @apply text-black;
+    }
+    &.info {
+      @apply from-purple-400 to-purple-600;
+    }
+    &.dark {
+      @apply from-gray-600 to-gray-900;
+    }
+  }
+  &.relief {
+    @apply focus:outline-none text-white  border-b-4 rounded-md;
+
+    &.primary {
+      @apply border-blue-600 bg-blue-500 hover:bg-blue-400;
+    }
+
+    &.secondary {
+      @apply border-gray-600 bg-gray-500 hover:bg-gray-400;
+    }
+    &.success {
+      @apply border-green-600 bg-green-500 hover:bg-green-400;
+    }
+    &.danger {
+      @apply border-red-600 bg-red-500 hover:bg-red-400;
+    }
+    &.warning {
+      @apply border-yellow-600 bg-yellow-500 hover:bg-yellow-400;
+    }
+    &.white {
+      @apply text-black;
+    }
+    &.info {
+      @apply border-purple-600 bg-purple-500 hover:bg-purple-400;
+    }
+    &.dark {
+      @apply border-gray-800 bg-gray-700 hover:bg-gray-600;
+    }
+  }
+  &.round {
+    @apply focus:outline-none  rounded-full border;
+
+    &.primary {
+      @apply text-blue-600 border-blue-600 hover:bg-blue-50;
+    }
+
+    &.secondary {
+      @apply text-gray-600 border-gray-600 hover:bg-gray-50;
+    }
+    &.success {
+      @apply text-green-600 border-green-600 hover:bg-green-50;
+    }
+    &.danger {
+      @apply text-red-600 border-red-600 hover:bg-red-50;
+    }
+    &.warning {
+      @apply text-yellow-600 border-yellow-600 hover:bg-yellow-50;
+    }
+    &.white {
+    }
+    &.info {
+      @apply text-gray-400 border-gray-400 hover:bg-gray-100;
+    }
+    &.dark {
+      @apply text-gray-800 border-gray-800 hover:bg-gray-200;
+    }
+  }
+}
