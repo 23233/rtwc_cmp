@@ -29,6 +29,7 @@ const Lmg: React.FC<LmgProps> = ({
   ...props
 }) => {
   const [success, setSuccess] = useState<boolean>(false);
+  const [mount, setMount] = useState<boolean>(false);
 
   useEffect(() => {
     if (src) {
@@ -49,6 +50,11 @@ const Lmg: React.FC<LmgProps> = ({
       };
     }
   }, [src]);
+
+  // ssr 不执行useEffect 所以直接放入即可
+  useEffect(() => {
+    setMount(true);
+  }, []);
 
   const clickFunc = (e: React.MouseEvent) => {
     onClick && onClick(e);
@@ -104,6 +110,10 @@ const Lmg: React.FC<LmgProps> = ({
     );
   }, [props]);
 
-  return <React.Fragment>{renderItem}</React.Fragment>;
+  return (
+    <React.Fragment>
+      {!mount ? <img src={src} alt={alt} title={alt} className={'hidden'} /> : renderItem}
+    </React.Fragment>
+  );
 };
 export default Lmg;
