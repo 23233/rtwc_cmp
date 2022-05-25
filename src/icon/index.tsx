@@ -38,6 +38,8 @@ export const AddIconUrl = (newUrl: string): void => {
   load(newUrl, 'icon-add-' + new Date().getTime().toString());
 };
 
+let mount = false;
+
 const Icon: React.FC<IconAttr> = ({
   type,
   title,
@@ -54,7 +56,10 @@ const Icon: React.FC<IconAttr> = ({
 
   useEffect(() => {
     setInit(true);
-    loadIconUrl('https://at.alicdn.com/t/font_2506983_bxxb13sody8.js');
+    if (!mount) {
+      loadIconUrl('https://at.alicdn.com/t/font_2506983_bxxb13sody8.js');
+      mount = true;
+    }
   }, []);
 
   return (
