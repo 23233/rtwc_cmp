@@ -31,7 +31,10 @@ const Lmg: React.FC<LmgProps> = ({
   const [success, setSuccess] = useState<boolean>(false);
   const [mount, setMount] = useState<boolean>(false);
 
+  // ssr 不执行useEffect
   useEffect(() => {
+    setMount(true);
+
     if (src) {
       const image = new Image();
       image.src = src;
@@ -50,11 +53,6 @@ const Lmg: React.FC<LmgProps> = ({
       };
     }
   }, [src]);
-
-  // ssr 不执行useEffect 所以直接放入即可
-  useEffect(() => {
-    setMount(true);
-  }, []);
 
   const clickFunc = (e: React.MouseEvent) => {
     onClick && onClick(e);
