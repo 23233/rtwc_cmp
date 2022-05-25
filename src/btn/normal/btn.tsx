@@ -3,6 +3,7 @@ import { Spin } from '@rtwc/cmp';
 import { useRipple } from '@rtwc/comm';
 import cs from 'classnames';
 import './btn.less';
+import { Link } from 'react-router-dom';
 
 export interface BtnAttr {
   scheme?: 'filled' | 'border' | 'flat' | 'gradient' | 'relief' | 'round';
@@ -17,8 +18,11 @@ export interface BtnAttr {
   className?: string;
   style?: CSSProperties;
   htmlType?: 'submit' | 'reset' | 'button';
+  btnType?: 'button' | 'link' | 'a';
   loading?: boolean;
   ripple?: boolean;
+  href?: string;
+  blank?: boolean;
 }
 
 const Btn: React.FC<BtnAttr> = ({
@@ -34,6 +38,9 @@ const Btn: React.FC<BtnAttr> = ({
   info,
   disable,
   loading = false,
+  btnType = 'button',
+  href,
+  blank = false,
   onClick,
   ...props
 }) => {
@@ -44,32 +51,69 @@ const Btn: React.FC<BtnAttr> = ({
   };
 
   const renders = useMemo(() => {
-    const BtnView = (
-      <button
-        type={htmlType}
-        aria-label={info}
-        className={cs(
-          {
-            cmp_btn: true,
-            icon: !!icon,
-            block: !!block,
-            [size]: true,
-            [scheme]: true,
-            [type]: true,
-            disable: !!disable,
-          },
-          className,
-        )}
-        disabled={disable}
-        style={props.style}
-        onClick={clickEvent}
-        ref={btnRef}
-        title={info}
-      >
-        {icon}
-        {!onlyIcon && info}
-      </button>
+    const cls = cs(
+      {
+        cmp_btn: true,
+        icon: !!icon,
+        block: !!block,
+        [size]: true,
+        [scheme]: true,
+        [type]: true,
+        disable: !!disable,
+      },
+      className,
     );
+    let BtnView;
+    switch (btnType) {
+      default:
+        BtnView = (
+          <button
+            type={htmlType}
+            aria-label={info}
+            className={cls}
+            disabled={disable}
+            style={props.style}
+            onClick={clickEvent}
+            ref={btnRef}
+            title={info}
+          >
+            {icon}
+            {!onlyIcon && info}
+          </button>
+        );
+        break;
+      case 'link':
+        BtnView = (
+          <Link
+            to={href}
+            aria-label={info}
+            className={cls}
+            style={props.style}
+            ref={btnRef}
+            title={info}
+          >
+            {icon}
+            {!onlyIcon && info}
+          </Link>
+        );
+        break;
+      case 'a':
+        BtnView = (
+          <a
+            href={href}
+            target={blank ? '_blank' : '_self'}
+            aria-label={info}
+            className={cls}
+            style={props.style}
+            ref={btnRef}
+            title={info}
+          >
+            {icon}
+            {!onlyIcon && info}
+          </a>
+        );
+        break;
+    }
 
     if (loading) {
       return (

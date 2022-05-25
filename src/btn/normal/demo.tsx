@@ -69,6 +69,12 @@ const index = (): any => {
             className={'mt-2'}
           />
         </div>
+
+        <div className={'mt-2'}>
+          <Btn btnType={'link'} info={'link标签'} href={'/search'} />
+          <Btn btnType={'a'} info={'a标签'} href={'/search'} />
+          <Btn btnType={'a'} blank info={'a标签新开页'} href={'/search'} />
+        </div>
       </div>
     </div>
   );
