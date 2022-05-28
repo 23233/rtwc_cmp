@@ -3,6 +3,7 @@ import React, { ReactNode, useMemo } from 'react';
 export interface HeaderAttr {
   title: string;
   className?: string;
+  contentCls?: string;
   onBack?: (e: React.MouseEvent) => void;
   onTitle?: (e: React.MouseEvent) => void;
   onShare?: () => void;
@@ -19,6 +20,8 @@ const Header: React.FC<HeaderAttr> = ({
   truncate = false,
   zIndex = 500,
   className = '',
+  contentCls = '',
+  fixed = false,
   ...props
 }) => {
   const backFunc = (e: React.MouseEvent) => {
@@ -77,19 +80,23 @@ const Header: React.FC<HeaderAttr> = ({
     <React.Fragment>
       <div
         className={`items-center ${
-          props?.fixed ? 'fixed top-0 left-0 w-full bg-transparent' : 'relative'
+          fixed ? 'fixed top-0 left-0 w-full bg-transparent' : 'relative'
         } ${className}`}
         style={{
-          zIndex: props?.fixed ? zIndex : 0,
+          zIndex: fixed ? zIndex : 0,
         }}
       >
         <React.Fragment>
-          {props?.fixed ? (
-            <div className={'flex justify-center items-center p-2 shadow-md relative bg-white'}>
+          {fixed ? (
+            <div
+              className={`flex justify-center items-center shadow-md relative bg-white gap-1 ${contentCls}`}
+            >
               {contentRender}
             </div>
           ) : (
-            <div className="flex justify-center items-center p-2 ">{contentRender}</div>
+            <div className={`flex justify-center items-center gap-1 ${contentCls}`}>
+              {contentRender}
+            </div>
           )}
         </React.Fragment>
       </div>
