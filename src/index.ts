@@ -6,7 +6,7 @@ export type { LmgProps } from './images/loadingImg';
 export { default as Lmg } from './images/loadingImg';
 
 export { default as PreviewImgView } from './images/previewImgView';
-export { fastImgPreviewOpen } from './images/previews/open';
+export { fastImgPreviewOpen, fastImgsPreviewOpen } from './images/previews/open';
 
 export type { CropImgAttr } from './images/crop/crop';
 export { default as DropRoundImg } from './images/crop/crop';
