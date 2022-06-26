@@ -11,8 +11,9 @@ const index: React.FC = () => {
   return (
     <div className={'m-2'}>
       <EmojiView onSelect={onSelect} />
-
       <div>当前选择:{select?.code}</div>
+
+      <EmojiView onSelect={onSelect} className={'gap-1 text-xl'} />
     </div>
   );
 };

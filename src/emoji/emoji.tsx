@@ -1,19 +1,27 @@
 import React, { useMemo } from 'react';
 import { EmojiItem } from '@rtwc/cmp';
 import emojiList from './emojiList';
+import classNames from 'classnames';
 
 export interface EmojiAttr {
+  className?: string;
   onSelect: (params: EmojiItem) => void;
   showBorder?: boolean;
+  activeCls?: string;
 }
 
-const EmojiView: React.FC<EmojiAttr> = ({ showBorder = true, ...props }) => {
+const EmojiView: React.FC<EmojiAttr> = ({
+  showBorder = true,
+  onSelect,
+  className = 'gap-2 p-2 text-2xl',
+  activeCls = 'hover:scale-110 active:scale-110',
+}) => {
   const select = (e: any, d: EmojiItem) => {
     // 阻止冒泡
     e.stopPropagation();
     e.nativeEvent.stopImmediatePropagation();
     // 发起事件
-    props.onSelect(d);
+    onSelect(d);
   };
 
   const renders = useMemo(() => {
@@ -24,7 +32,10 @@ const EmojiView: React.FC<EmojiAttr> = ({ showBorder = true, ...props }) => {
             key={`${d.code}${i}`}
             aria-label={d.label}
             title={d.label}
-            className="select-none transition-all hover:scale-125 active:scale-125 cursor-pointer text-center"
+            className={classNames(
+              'select-none transition-all cursor-pointer text-center',
+              activeCls,
+            )}
             onClick={(e) => select(e, d)}
           >
             {d.show}
@@ -36,7 +47,7 @@ const EmojiView: React.FC<EmojiAttr> = ({ showBorder = true, ...props }) => {
 
   return (
     <React.Fragment>
-      <div className={`grid grid-cols-8 gap-2 p-2 text-2xl ${showBorder ? 'border-t' : ''}`}>
+      <div className={`${classNames('grid grid-cols-8', showBorder ? 'border-t' : '', className)}`}>
         {renders}
       </div>
     </React.Fragment>
