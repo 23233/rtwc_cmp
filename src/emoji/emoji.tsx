@@ -19,9 +19,9 @@ const EmojiView: React.FC<EmojiAttr> = ({ showBorder = true, ...props }) => {
   const renders = useMemo(() => {
     return (
       <React.Fragment>
-        {emojiList.map((d) => (
+        {emojiList.map((d, i) => (
           <div
-            key={d.code}
+            key={`${d.code}${i}`}
             aria-label={d.label}
             title={d.label}
             className="select-none transition-all hover:scale-125 active:scale-125 cursor-pointer text-center"
