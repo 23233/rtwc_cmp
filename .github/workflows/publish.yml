@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          default: rc
+          default: patch
 
       - name: Publish to NPM
         run: npm publish || true
