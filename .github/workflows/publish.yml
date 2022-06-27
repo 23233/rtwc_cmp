@@ -40,6 +40,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Refresh npmmirror cache
-        uses: wei/curl
+        uses: wei/curl@master
         with:
           args: https://npmmirror.com/sync/@rtwc/cmp
