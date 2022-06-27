@@ -38,3 +38,8 @@ jobs:
         run: npm publish || true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Refresh npmmirror cache
+        uses: wei/curl
+        with:
+          args: https://npmmirror.com/sync/@rtwc/cmp
