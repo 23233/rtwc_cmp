@@ -3,10 +3,9 @@ import { Spin } from '@rtwc/cmp';
 import { useRipple } from '@rtwc/comm';
 import cs from 'classnames';
 import './btn.less';
-import { Link } from 'react-router-dom';
 
 export interface BtnAttr {
-  scheme?: 'filled' | 'border' | 'flat' | 'gradient' | 'relief' | 'round';
+  scheme?: 'filled' | 'border' | 'flat' | 'gradient' | 'relief' | 'round' | 'custom';
   size?: 'large' | 'big' | 'small' | 'little' | 'less'; // 从大向小
   icon?: React.ReactNode;
   onlyIcon?: boolean;
@@ -18,7 +17,7 @@ export interface BtnAttr {
   className?: string;
   style?: CSSProperties;
   htmlType?: 'submit' | 'reset' | 'button';
-  btnType?: 'button' | 'link' | 'a';
+  btnType?: 'button' | 'a';
   loading?: boolean;
   ripple?: boolean;
   href?: string;
@@ -56,11 +55,15 @@ const Btn: React.FC<BtnAttr> = ({
         cmp_btn: true,
         icon: !!icon,
         block: !!block,
-        [size]: true,
-        [scheme]: true,
-        [type]: true,
         disable: !!disable,
       },
+      [
+        scheme !== 'custom' && {
+          [size]: true,
+          [scheme]: true,
+          [type]: true,
+        },
+      ],
       className,
     );
     let BtnView;
@@ -82,21 +85,7 @@ const Btn: React.FC<BtnAttr> = ({
           </button>
         );
         break;
-      case 'link':
-        BtnView = (
-          <Link
-            to={href}
-            aria-label={info}
-            className={cls}
-            style={props.style}
-            ref={btnRef}
-            title={info}
-          >
-            {icon}
-            {!onlyIcon && info}
-          </Link>
-        );
-        break;
+
       case 'a':
         BtnView = (
           <a

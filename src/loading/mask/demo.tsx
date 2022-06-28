@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {MaskLoading} from '@rtwc/cmp';
+import React, { useEffect, useState } from 'react';
+import { MaskLoading } from '@rtwc/cmp';
 
 const index: React.FC = () => {
   const [process, setProcess] = useState<number>(1);
@@ -15,17 +15,12 @@ const index: React.FC = () => {
 
   return (
     <div className={'m-2'}>
-      <div className={"relative h-24"}>
-        <MaskLoading visible msg={'内容'} percent={process}/>
+      <div className={'relative h-24'}>
+        <MaskLoading visible msg={'内容'} percent={process} />
+        里面有字可以看到
       </div>
 
-      <div>
-        可相对 可浮动
-      </div>
-
-
-
-
+      <div>可相对 可浮动</div>
     </div>
   );
 };

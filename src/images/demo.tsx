@@ -1,6 +1,6 @@
 import React from 'react';
 import { Lmg, PreviewImgView, fastImgPreviewOpen } from '@rtwc/cmp';
-import { fastImgsPreviewOpen } from './previews/open';
+import { fastImgsPreviewOpen } from '@rtwc/cmp';
 
 const index: React.FC = () => {
   const img =

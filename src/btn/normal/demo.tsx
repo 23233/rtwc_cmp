@@ -19,12 +19,21 @@ const index = (): any => {
   return (
     <div>
       <div className={'mx-1'}>
-        <Btn info={'默认按钮'} />
-        <Btn info={'自定义类名 加了阴影'} className={'shadow-lg ml-2'} />
+        <div className={'flex gap-1'}>
+          <Btn info={'默认按钮'} />
+          <Btn info={'自定义类名 加了阴影'} className={'shadow-lg '} />
+          <Btn
+            info={'自定义样式'}
+            scheme={'custom'}
+            ripple
+            className={'p-1 border rounded text-xs'}
+          />
+        </div>
+
         {schemeList.map((b) => (
           <div key={b}>
             <p className={'text-xl mb-1'}>类型:{b}</p>
-            <div>
+            <div className={'flex gap-1'}>
               {typeList.map((t) => (
                 <Btn
                   key={`${b}${t}`}
@@ -33,7 +42,6 @@ const index = (): any => {
                   // @ts-ignore
                   scheme={b}
                   info={t}
-                  className={'mr-1 mb-1'}
                 />
               ))}
             </div>
@@ -71,7 +79,6 @@ const index = (): any => {
         </div>
 
         <div className={'mt-2'}>
-          <Btn btnType={'link'} info={'link标签'} href={'/search'} />
           <Btn btnType={'a'} info={'a标签'} href={'/search'} />
           <Btn btnType={'a'} blank info={'a标签新开页'} href={'/search'} />
         </div>
