@@ -43,6 +43,8 @@ export interface commentViewParams extends commentViewBaseParams {
   user: commentUserParams;
   /** 用户头像类名 */
   userLogoCls?: string;
+  /** 用户头像额外node */
+  userLogoSlot?: React.ReactNode;
   /** 当用户头像或用户昵称被点击 */
   onUserClick?: (from: 'avatar' | 'name') => void;
   /** 用户描述下方额外node */
@@ -71,6 +73,7 @@ const CommentView: React.FC<commentViewParams> = ({
   onReply,
   userDescExtra,
   userRightExtra,
+  userLogoSlot,
   contentExtra,
   children,
 }) => {
@@ -115,15 +118,17 @@ const CommentView: React.FC<commentViewParams> = ({
       <div className={''}>
         {/*渲染用户相关*/}
         <div className={'flex items-center gap-1'}>
-          <div
-            className={`cursor-pointer overflow-hidden flex-shrink-0 rounded-full ${classNames(
-              userLogoCls,
-            )}`}
-            title={user?.nickName}
-            onClick={onUserLogoClick}
-          >
-            <Lmg src={user?.avatar || ''} useBk />
+          <div className={'flex-shrink-0 relative'}>
+            <div
+              className={`cursor-pointer overflow-hidden rounded-full ${classNames(userLogoCls)}`}
+              title={user?.nickName}
+              onClick={onUserLogoClick}
+            >
+              <Lmg src={user?.avatar || ''} useBk />
+            </div>
+            {userLogoSlot}
           </div>
+
           <div className={'flex-grow'}>
             {userNickNameRender}
             {userDescExtra}
