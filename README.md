@@ -7,4 +7,12 @@
   - 若未包含以上信息 则 版本号从 `1.0.0` -> `1.0.1` 等同于执行
     - npm version patch
 
+```shell
+  # 默认配置信息
+  majorWords: [ 'BREAKING CHANGE', 'major' ],
+  minorWords: [ 'feat', 'minor' ],
+  patchWords: null,
+  preReleaseWords: [ 'pre-alpha', 'pre-beta', 'pre-rc' ]
+```
+
 ### 开发时 需要设置环境 `TAILWIND_MODE=watch` 除非升级到 postcss8 详情看 [issue](https://github.com/tailwindlabs/tailwindcss/issues/5132#issuecomment-894549642)
