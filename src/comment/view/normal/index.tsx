@@ -22,6 +22,8 @@ export interface commentViewBaseParams {
   links?: inputLinkParams[];
   /** 喜欢数量 */
   like?: number;
+  /** 超出不显示 */
+  likeLimit?: number;
   /** 更新时间 */
   update_time?: string;
   /** 内容额外node */
@@ -61,6 +63,7 @@ const CommentView: React.FC<commentViewParams> = ({
   imgs = [],
   links = [],
   like = 0,
+  likeLimit = 999,
   update_time,
   user = {},
   userLogoCls = 'w-10 h-10',
@@ -107,8 +110,8 @@ const CommentView: React.FC<commentViewParams> = ({
   };
 
   const likeMsg = useMemo(() => {
-    if (like > 999) {
-      return '999+';
+    if (like > likeLimit) {
+      return likeLimit + '+';
     }
     return like;
   }, [like]);
