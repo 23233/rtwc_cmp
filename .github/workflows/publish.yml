@@ -1,9 +1,8 @@
 name: Publish to NPM
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main # default branch
 
 jobs:
   publish-to-npm:
@@ -20,15 +19,15 @@ jobs:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           default: patch
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Publish to NPM
         run: npm publish || true
