@@ -1,4 +1,5 @@
 name: Publish to NPM
+
 on:
   push:
     branches:
@@ -24,10 +25,9 @@ jobs:
         with:
           default: patch
 
-      - name: Publish to NPM
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Refresh npmmirror cache
         uses: wei/curl@master
