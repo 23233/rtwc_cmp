@@ -6,19 +6,17 @@ on:
 
 jobs:
   publish-to-npm:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
+    # 设置 node 版本
+    strategy:
+      matrix:
+        node-version: [ 16 ]
     steps:
-      - name: Checkout release branch code
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-
-      - name: Setup Node version
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: 'https://registry.npmjs.org'
-
+      - uses: npm install
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
         env:
@@ -26,11 +24,8 @@ jobs:
         with:
           default: patch
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Publish to NPM
-        run: npm publish || true
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
