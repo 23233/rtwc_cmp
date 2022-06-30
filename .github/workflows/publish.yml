@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: 16
       - run: npm install
-      - run: npm build
+      - run: npm run build
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
         env:
