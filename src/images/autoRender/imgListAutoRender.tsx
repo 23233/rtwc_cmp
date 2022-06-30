@@ -10,6 +10,7 @@ export interface ImgListAutoRenderParams {
   imgHeightCls?: string;
   /** 图片上下分割高度类名 推荐两种高度设置一致  */
   imgSplitHeightCls?: string;
+  onClick?: (d: fileUploadResp) => void;
 }
 
 const ImgListAutoRender: React.FC<ImgListAutoRenderParams> = ({
@@ -17,8 +18,13 @@ const ImgListAutoRender: React.FC<ImgListAutoRenderParams> = ({
   alt,
   imgHeightCls = 'h-32 md:h-36 lg:h-42',
   imgSplitHeightCls = 'h-32 md:h-36 lg:h-42',
+  onClick,
 }) => {
   const itemClick = (d: fileUploadResp) => {
+    if (onClick) {
+      onClick(d);
+      return;
+    }
     console.log('多图片预览', d);
     const images = imgs.map((d) => d.origin);
     fastImgsPreviewOpen(images, d.origin);

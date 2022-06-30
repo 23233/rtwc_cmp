@@ -54,6 +54,9 @@ export { default as Icons, ChangeIconUrl, AddIconUrl } from './icon/index';
 export { default as InputAreaView } from './input/textarea/inputArea';
 export type { inputAreaRef, inputAreaParams } from './input/textarea/inputArea';
 
+export { default as UserSimpleView } from './user/simple';
+export type { userSimpleViewParams } from './user/simple';
+
 export { default as UserCommentInput } from './input/combined/userComment';
 export type {
   userCommentInputParams,

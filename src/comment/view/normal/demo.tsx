@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { SimpleTitle } from '@rtwc/cmp';
 import { CommentPreCombView, CommentView, InlineReplyInput, UserCommentInput } from '@rtwc/cmp';
 
-``;
 const index = (): any => {
   const user = {
     avatar:
@@ -14,7 +13,7 @@ const index = (): any => {
     <div>
       <SimpleTitle text={'包含链接'} />
       <CommentView
-        user={user}
+        userAttr={user}
         links={[
           {
             title: '跳转到百度',
@@ -35,10 +34,10 @@ const index = (): any => {
         ]}
       />
       <SimpleTitle text={'加载中'} />
-      <CommentView user={user} value={'zpiqodeSDK佛普外科'} loading />
+      <CommentView userAttr={user} value={'zpiqodeSDK佛普外科'} loading />
       <SimpleTitle text={'纯文字'} />
       <CommentView
-        user={user}
+        userAttr={user}
         value={
           '文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样'
         }
@@ -46,7 +45,7 @@ const index = (): any => {
 
       <SimpleTitle text={'纯图片'} />
       <CommentView
-        user={user}
+        userAttr={user}
         imgs={[
           {
             origin: 'https://resok.cn/img/photo-1522202176988-66273c2fd55f.jpeg',
@@ -66,7 +65,7 @@ const index = (): any => {
       <SimpleTitle text={'文字图片混合'} />
 
       <CommentView
-        user={user}
+        userAttr={user}
         value={
           '文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样文字内容也可以稍微的长一点看看效果怎么样'
         }
@@ -90,15 +89,17 @@ const index = (): any => {
 
       <SimpleTitle text={'自定义传入各类node'} />
       <CommentView
-        user={user}
+        userAttr={{
+          ...user,
+          descExtra: (
+            <p className={'text-black text-opacity-60 hover:text-opacity-90 text-sm '}>
+              北京大学教授 赵日天
+            </p>
+          ),
+          rightExtra: <span className={'text-xs'}>右侧按钮</span>,
+        }}
         value={'文字'}
-        userDescExtra={
-          <p className={'text-black text-opacity-60 hover:text-opacity-90 text-sm '}>
-            北京大学教授 赵日天
-          </p>
-        }
         like={10}
-        userRightExtra={<span className={'text-xs'}>右侧按钮</span>}
         contentExtra={
           <div
             className={
@@ -112,7 +113,7 @@ const index = (): any => {
 
       <SimpleTitle text={'用户头像点击事件跳转 用户昵称a标签跳转'} />
       <CommentView
-        user={{
+        userAttr={{
           ...user,
           href: 'https://www.baidu.com',
         }}
@@ -122,7 +123,7 @@ const index = (): any => {
       <SimpleTitle text={'显示各类操作'} />
 
       <CommentView
-        user={user}
+        userAttr={{ ...user, onUserClick: (f) => alert('用户' + f + '点击') }}
         value={'文字内容也可以稍微的长一点看看效果'}
         like={10}
         onLike={() => alert('喜欢点击')}
@@ -130,14 +131,13 @@ const index = (): any => {
         onDelete={() => alert('删除点击')}
         onReply={() => alert('回复点击')}
         onReport={() => alert('举报点击')}
-        onUserClick={(f) => alert('用户' + f + '点击')}
         update_time={'2022-6-27 21:38:35'}
       />
 
       <SimpleTitle text={'内嵌自己'} />
-      <CommentView user={user} value={'传入用户的href字段即可'}>
+      <CommentView userAttr={user} value={'传入用户的href字段即可'}>
         <CommentView
-          user={{
+          userAttr={{
             avatar:
               'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
             nickName: '用户昵称',
@@ -146,7 +146,7 @@ const index = (): any => {
         />
       </CommentView>
       <SimpleTitle text={'内嵌复杂评论框'} />
-      <CommentView user={user} value={'传入用户的href字段即可'}>
+      <CommentView userAttr={user} value={'传入用户的href字段即可'}>
         <UserCommentInput
           avatar={
             'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png'
@@ -156,14 +156,14 @@ const index = (): any => {
       </CommentView>
       <SimpleTitle text={'内嵌简单评论框'} />
 
-      <CommentView user={user} value={'传入用户的href字段即可'}>
+      <CommentView userAttr={user} value={'传入用户的href字段即可'}>
         <InlineReplyInput onSend={(values) => console.log('回复成功', values)} />
       </CommentView>
 
       <SimpleTitle text={'预处理嵌入'} />
 
       <CommentPreCombView
-        user={{
+        userAttr={{
           ...user,
           desc: '科学院兽医',
           verify: '北京科学院夫人ff',
@@ -175,7 +175,7 @@ const index = (): any => {
       <SimpleTitle text={'预处理嵌入自己'} />
 
       <CommentPreCombView
-        user={{
+        userAttr={{
           ...user,
           desc: '科学院兽医',
           verify: '北京科学院夫人ff',
@@ -184,7 +184,7 @@ const index = (): any => {
         value={'sdjifjiwefjifewjiefw'}
       >
         <CommentPreCombView
-          user={{
+          userAttr={{
             ...user,
             desc: '科学院兽医',
             verify: '北京科学院夫人ff',

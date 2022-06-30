@@ -1,21 +1,21 @@
 import React, { useMemo } from 'react';
-import { commentUserParams, commentViewBaseParams } from '@rtwc/cmp';
+import { commentViewBaseParams, userSimpleViewParams } from '@rtwc/cmp';
 import CommentView from './index';
 
 import { Cwal, Toast } from '@rtwc/cmp';
 
-export interface commentPreCombUserParams extends commentUserParams {
+export interface commentPreCombUserParams extends userSimpleViewParams {
   /** 用户描述 */
   desc?: string;
   /** 用户认证信息 */
   verify?: string;
+  /** 用户 头像昵称或者验证信息点击 */
+  onUserClick?: (from: 'avatar' | 'name' | 'verify') => void;
 }
 
 export interface commentPreCombParams extends commentViewBaseParams {
   /** 用户基本信息 */
-  user: commentPreCombUserParams;
-  /** 用户 头像昵称或者验证信息点击 */
-  onUserClick?: (from: 'avatar' | 'name' | 'verify') => void;
+  userAttr: commentPreCombUserParams;
   /** 回复数量 大于0会显示展开 */
   replyCount?: number;
   /** 展开回复事件 */
@@ -33,7 +33,7 @@ const CommentPreCombView: React.FC<commentPreCombParams> = ({ ...props }) => {
       return;
     }
     Toast.fire({
-      title: props?.user?.verify,
+      title: props?.userAttr?.verify,
       text: '认证信息',
     });
   };
@@ -41,9 +41,9 @@ const CommentPreCombView: React.FC<commentPreCombParams> = ({ ...props }) => {
   const userExtra = useMemo(() => {
     return (
       <div className={'flex gap-1'}>
-        {!!props?.user?.desc && (
+        {!!props?.userAttr?.desc && (
           <p className={'text-black text-opacity-60 hover:text-opacity-90 text-sm '}>
-            {props?.user?.desc}
+            {props?.userAttr?.desc}
           </p>
         )}
       </div>
@@ -51,11 +51,11 @@ const CommentPreCombView: React.FC<commentPreCombParams> = ({ ...props }) => {
   }, [props]);
 
   const verifyExtra = useMemo(() => {
-    if (!!props?.user?.verify) {
+    if (!!props?.userAttr?.verify) {
       return (
         <div
           className={'cursor-pointer absolute -left-1 -top-1 z-20'}
-          title={props?.user?.verify}
+          title={props?.userAttr?.verify}
           onClick={onVerifyClick}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="20" height="20">
@@ -93,8 +93,11 @@ const CommentPreCombView: React.FC<commentPreCombParams> = ({ ...props }) => {
   return (
     <CommentView
       {...props}
-      userDescExtra={userExtra}
-      userLogoSlot={verifyExtra}
+      userAttr={{
+        ...props.userAttr,
+        descExtra: userExtra,
+        logoSlot: verifyExtra,
+      }}
       contentExtra={replyExtra}
     />
   );
