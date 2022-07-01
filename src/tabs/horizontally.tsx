@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import './index.css';
 
 export interface TabItem {
   id: string | number;
@@ -91,7 +90,7 @@ const HorizontallyTabs: React.FC<HorizontalTabAttr> = ({
 
   return (
     <div className="relative flex">
-      <div className="flex overflow-x-auto flex-grow items-center no-scrollbar" ref={warpRef}>
+      <div className={`flex overflow-x-auto flex-grow items-center no-scrollbar`} ref={warpRef}>
         {items?.map((d) => {
           if (linkRender) {
             return (

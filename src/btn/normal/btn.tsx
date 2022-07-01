@@ -2,7 +2,6 @@ import React, { CSSProperties, useMemo, useRef } from 'react';
 import { Spin } from '@rtwc/cmp';
 import { useRipple } from '@rtwc/comm';
 import classNames from 'classnames';
-import './btn.css';
 import { initCls, initSchemeCls } from './initCls';
 
 export interface BtnAttr {

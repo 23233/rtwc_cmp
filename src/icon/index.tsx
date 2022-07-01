@@ -1,7 +1,6 @@
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useRipple } from '@rtwc/comm';
-import './index.css';
 
 export interface IconAttr {
   type: string;
@@ -62,7 +61,18 @@ const Icon: React.FC<IconAttr> = ({
   return (
     <span style={{ fontSize: size }} ref={refs} onClick={onClick} title={title}>
       {init && (
-        <svg className={classnames('custom-icon', className)} aria-hidden="true" style={style}>
+        <svg
+          className={classnames('custom-icon', className)}
+          aria-hidden="true"
+          style={{
+            width: '1em',
+            height: '1em',
+            overflow: 'hidden',
+            verticalAlign: '-0.15em',
+            fill: 'currentcolor',
+            ...style,
+          }}
+        >
           <use xlinkHref={`#${prefix}-${type}`} />
         </svg>
       )}

@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2';
-import './swal_reset.css';
 
 // 中文版的swal
 const Cwal = Swal.mixin({

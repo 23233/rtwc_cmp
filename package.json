@@ -66,6 +66,7 @@
     "father-build": "^1.22.3",
     "gh-pages": "^4.0.0",
     "lint-staged": "^13.0.3",
+    "postcss-import": "^14.1.0",
     "prettier": "^2.7.1",
     "rc-progress": "^3.4.0",
     "yorkie": "^2.0.0"

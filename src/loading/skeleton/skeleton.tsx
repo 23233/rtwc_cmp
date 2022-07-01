@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './skeleton.css';
+import classNames from 'classnames';
 
 export interface SkeletonAttr {
   loading?: boolean;
@@ -69,7 +69,7 @@ const Skeleton: React.FC<SkeletonAttr> = ({
   return (
     <React.Fragment>
       {loading ? (
-        <div className={`${showPd ? 'p-4' : ''} sk-wrap ${className || ''}`}>{renders}</div>
+        <div className={`sk-wrap ${classNames(className, showPd ? 'p-4' : '')}`}>{renders}</div>
       ) : (
         children
       )}

@@ -1,3 +1,5 @@
+// import "./base.css"
+
 export { sendClipboard, downloadFile } from './tools/file';
 
 export type { LmgProps } from './images/loadingImg';
