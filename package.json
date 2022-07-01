@@ -1,6 +1,6 @@
 {
   "name": "@rtwc/cmp",
-  "version": "1.9.9",
+  "version": "1.9.10",
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
