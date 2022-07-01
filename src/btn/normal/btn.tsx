@@ -1,8 +1,9 @@
 import React, { CSSProperties, useMemo, useRef } from 'react';
 import { Spin } from '@rtwc/cmp';
 import { useRipple } from '@rtwc/comm';
-import cs from 'classnames';
-import './btn.less';
+import classNames from 'classnames';
+import './btn.css';
+import { initCls, initSchemeCls } from './initCls';
 
 export interface BtnAttr {
   scheme?: 'filled' | 'border' | 'flat' | 'gradient' | 'relief' | 'round' | 'custom';
@@ -35,7 +36,7 @@ const Btn: React.FC<BtnAttr> = ({
   block = false,
   ripple = false,
   info,
-  disable,
+  disable = false,
   loading = false,
   btnType = 'button',
   href,
@@ -50,19 +51,13 @@ const Btn: React.FC<BtnAttr> = ({
   };
 
   const renders = useMemo(() => {
-    const cls = cs(
-      {
-        cmp_btn: true,
-        icon: !!icon,
-        block: !!block,
-        disable: !!disable,
-      },
-      [
-        scheme !== 'custom' && {
-          [size]: true,
-          [scheme]: true,
-          [type]: true,
-        },
+    const cls = classNames(
+      'transition-all cmp_btn',
+      [!!icon && initCls.icon, block && initCls.block, disable && initCls.disable],
+      scheme !== 'custom' && [
+        initCls[size],
+        initSchemeCls[scheme].self,
+        initSchemeCls[scheme][type],
       ],
       className,
     );

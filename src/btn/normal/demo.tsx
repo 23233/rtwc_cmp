@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Btn } from '@rtwc/cmp';
-import Icon from '../../icon';
+import { Btn, Icons } from '@rtwc/cmp';
 
 const index = (): any => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -33,7 +32,7 @@ const index = (): any => {
         {schemeList.map((b) => (
           <div key={b}>
             <p className={'text-xl mb-1'}>类型:{b}</p>
-            <div className={'flex gap-1'}>
+            <div className={'flex gap-1 flex-wrap'}>
               {typeList.map((t) => (
                 <Btn
                   key={`${b}${t}`}
@@ -67,10 +66,10 @@ const index = (): any => {
           <Btn info={'超大尺寸'} className={'mt-2 mx-1'} size={'large'} />
         </div>
         <div className={'mt-2'}>
-          <Btn icon={<Icon type={'plus'} />} info={'有图标'} size={'less'} />
+          <Btn icon={<Icons type={'plus'} />} info={'有图标'} size={'less'} />
 
           <Btn
-            icon={<Icon type={'plus'} />}
+            icon={<Icons type={'plus'} />}
             info={'仅图标'}
             onlyIcon
             size={'less'}
