@@ -1,7 +1,7 @@
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import classnames from 'classnames';
 import { useRipple } from '@rtwc/comm';
-import './index.less';
+import './index.css';
 
 export interface IconAttr {
   type: string;

@@ -1,5 +1,5 @@
-import React, {useMemo} from 'react';
-import './skeleton.less';
+import React, { useMemo } from 'react';
+import './skeleton.css';
 
 export interface SkeletonAttr {
   loading?: boolean;
@@ -12,21 +12,21 @@ export interface SkeletonAttr {
 }
 
 const Skeleton: React.FC<SkeletonAttr> = ({
-                                            loading,
-                                            type,
-                                            line = 15,
-                                            showPd = true,
-                                            className,
-                                            children,
-                                          }) => {
+  loading,
+  type,
+  line = 15,
+  showPd = true,
+  className,
+  children,
+}) => {
   const avatarRender = useMemo(
     () => (
       <div className="flex items-center justify-between">
-        <div className="rounded-full bg-gray-200 w-10 h-10 shink flex-shrink-0"/>
+        <div className="rounded-full bg-gray-200 w-10 h-10 shink flex-shrink-0" />
         <div className="flex-grow">
-          <div className={"pl-2"}>
-            <div className="mt-2 h-4 bg-gray-200 shink"/>
-            <div className="mt-2 h-4 bg-gray-200 shink"/>
+          <div className={'pl-2'}>
+            <div className="mt-2 h-4 bg-gray-200 shink" />
+            <div className="mt-2 h-4 bg-gray-200 shink" />
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@ const Skeleton: React.FC<SkeletonAttr> = ({
         <div className="page-wrap">
           {newsLine.map((d, i) => (
             // eslint-disable-next-line react/no-array-index-key
-            <div key={`sk_page${i}`} className="bg-gray-200 h-4 mt-4 shink"/>
+            <div key={`sk_page${i}`} className="bg-gray-200 h-4 mt-4 shink" />
           ))}
         </div>
       );
@@ -51,17 +51,17 @@ const Skeleton: React.FC<SkeletonAttr> = ({
       return (
         <div>
           {avatarRender}
-          <div className="w-full mt-2 h-4 bg-gray-200 shink"/>
-          <div className="w-full mt-2 h-4 bg-gray-200 shink"/>
-          <div className="w-full mt-2 h-4 bg-gray-200 shink"/>
-          <div className="w-2/3 mt-2 h-4 bg-gray-200 shink"/>
+          <div className="w-full mt-2 h-4 bg-gray-200 shink" />
+          <div className="w-full mt-2 h-4 bg-gray-200 shink" />
+          <div className="w-full mt-2 h-4 bg-gray-200 shink" />
+          <div className="w-2/3 mt-2 h-4 bg-gray-200 shink" />
         </div>
       );
     }
     return (
       <div className="">
-        <div className="h-4 bg-gray-200 shink w-full"/>
-        <div className="h-4 mt-1 bg-gray-200 shink w-full"/>
+        <div className="h-4 bg-gray-200 shink w-full" />
+        <div className="h-4 mt-1 bg-gray-200 shink w-full" />
       </div>
     );
   }, []);
@@ -69,9 +69,7 @@ const Skeleton: React.FC<SkeletonAttr> = ({
   return (
     <React.Fragment>
       {loading ? (
-        <div className={`${showPd ? 'p-4' : ''} sk-wrap ${className || ''}`}>
-          {renders}
-        </div>
+        <div className={`${showPd ? 'p-4' : ''} sk-wrap ${className || ''}`}>{renders}</div>
       ) : (
         children
       )}

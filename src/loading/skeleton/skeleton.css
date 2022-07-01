@@ -1,0 +1,44 @@
+
+.sk-wrap .skeleton-wrap .page-wrap > view {
+  width: 100%;
+}
+
+.sk-wrap .skeleton-wrap .page-wrap > view:first-child {
+  width: 33%;
+}
+
+.sk-wrap .skeleton-wrap .page-wrap > view:last-child {
+  width: 66%;
+}
+
+.sk-wrap .shink {
+  overflow: hidden;
+}
+
+.sk-wrap .shink:before {
+  display: block;
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+  );
+  transform: translate(50%);
+  animation-name: ske;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  content: ' ';
+}
+
+
+@keyframes ske {
+  from {
+    transform: translate(-100%);
+  }
+  to {
+    transform: translate(200%);
+  }
+}

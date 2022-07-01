@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import './spin.scss';
+import './spin.css';
 import classNames from 'classnames';
 
 export interface SpinAttr {
