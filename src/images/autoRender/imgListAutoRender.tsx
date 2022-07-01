@@ -50,7 +50,7 @@ const ImgListAutoRender: React.FC<ImgListAutoRenderParams> = ({
       return (
         <div className={`rounded-lg overflow-hidden`}>
           {!!top && Item(top, -1, classNames(imgSplitHeightCls, 'mb-1'))}
-          <div className={`grid gap-1 ${classNames(defaultSplitCls, splitCls)}`}>
+          <div className={`grid gap-1 ${classNames(splitCls || defaultSplitCls)}`}>
             {mid.map((d, i) => {
               return Item(d, i, imgHeightCls);
             })}

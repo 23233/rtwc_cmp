@@ -1,5 +1,3 @@
-import './base.less';
-
 export { sendClipboard, downloadFile } from './tools/file';
 
 export type { LmgProps } from './images/loadingImg';

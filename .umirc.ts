@@ -13,12 +13,7 @@ export default defineConfig({
   // base和publicPath 主要作用于github page访问
   base: '/' + storeName,
   publicPath: '/' + storeName + '/', // 打包文件时，引入地址生成 publicPath/xxx.js
-  extraPostCSSPlugins: [require('tailwindcss'), require('autoprefixer')],
-  sass: {},
   // 因为目前 babel打包的情况下无法正常运行postcss 所以注入tailwind 方便查看demo
   // 持续追踪 https://github.com/umijs/father/issues/265
-  styles:
-    process.env.NODE_ENV !== 'development'
-      ? ['https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css']
-      : [],
+  styles: ['https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css'],
 });
