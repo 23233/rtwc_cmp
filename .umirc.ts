@@ -3,7 +3,7 @@ import { defineConfig } from 'dumi';
 // git仓库名称
 let storeName = 'rtwc_cmp';
 export default defineConfig({
-  title: '基于react tailwind常见的业务组件',
+  title: '日常业务组件 ui组件在ui库里',
   favicon:
     'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
   logo: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',

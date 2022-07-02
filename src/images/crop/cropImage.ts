@@ -1,6 +1,6 @@
-import {Area} from "react-easy-crop/types";
+import { Area } from 'react-easy-crop';
 
-const createImage = (url: string):Promise<HTMLImageElement> => {
+const createImage = (url: string): Promise<HTMLImageElement> => {
   return new Promise((resolve, reject) => {
     const image = new Image();
     image.addEventListener('load', () => resolve(image));
@@ -8,13 +8,11 @@ const createImage = (url: string):Promise<HTMLImageElement> => {
     image.setAttribute('crossOrigin', 'anonymous'); // needed to avoid cross-origin issues on CodeSandbox
     image.src = url;
   });
-}
-
+};
 
 function getRadianAngle(degreeValue: number) {
   return (degreeValue * Math.PI) / 180;
 }
-
 
 /**
  * This function was adapted from the one in the ReadMe of https://github.com/DominicTobias/react-image-crop
@@ -41,11 +39,7 @@ export default async function getCroppedImg(imageSrc: string, pixelCrop: Area, r
   ctx.translate(-safeArea / 2, -safeArea / 2);
 
   // draw rotated image and store data.
-  ctx.drawImage(
-    image,
-    safeArea / 2 - image.width * 0.5,
-    safeArea / 2 - image.height * 0.5,
-  );
+  ctx.drawImage(image, safeArea / 2 - image.width * 0.5, safeArea / 2 - image.height * 0.5);
   const data = ctx.getImageData(0, 0, safeArea, safeArea);
 
   // set canvas width to final desired crop size - this will clear existing context

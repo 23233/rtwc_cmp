@@ -1,9 +1,3 @@
-/* import 'viewerjs/dist/viewer.min.css'; 加载viewer图片样式 */
-
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
 
 .cwal-warp {
   --padding: 1.2em 0.8em;
@@ -26,46 +20,3 @@
   z-index: var(--z-index) !important;
 }
 
-
-.shink:before {
-  display: block;
-  width: 50%;
-  height: 100%;
-  background-image: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transform: translate(50%);
-  animation-name: ske;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  content: ' ';
-}
-.shink {
-  overflow: hidden;
-}
-@keyframes ske {
-  from {
-    transform: translate(-100%);
-  }
-  to {
-    transform: translate(200%);
-  }
-}
-
-@keyframes spin-loading {
-  0% {
-    transform: rotate(0);
-    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-  }
-  50% {
-    transform: rotate(900deg);
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  100% {
-    transform: rotate(1800deg);
-  }
-}

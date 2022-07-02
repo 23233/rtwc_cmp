@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import dayjs from 'dayjs';
-import Cropper from 'react-easy-crop';
+import Cropper, { Area } from 'react-easy-crop';
 import getCroppedImg from './cropImage';
-import { Area } from 'react-easy-crop/types';
 
 export interface CropImgAttr {
   src: string;

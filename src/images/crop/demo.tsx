@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DropRoundImg, Lmg } from '@rtwc/cmp';
+import { DropRoundImg } from '@rtwc/cmp';
 
 const index: React.FC = () => {
   const [cropFile, setCropFile] = useState<File>();
@@ -12,10 +12,7 @@ const index: React.FC = () => {
   return (
     <div className={'m-2'}>
       {cropFile ? (
-        <Lmg
-          src={window.URL.createObjectURL(cropFile)}
-          className={'rounded-full'}
-        />
+        <img src={window.URL.createObjectURL(cropFile)} className={'rounded-full'} alt={'测试'} />
       ) : (
         <DropRoundImg
           src={
