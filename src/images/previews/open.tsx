@@ -11,6 +11,7 @@ export function fastImgPreviewOpen(src: string): any {
     zIndex: 9999,
     hide(event: CustomEvent) {
       img.remove();
+      viewer.destroy();
     },
   });
   viewer.show();
@@ -32,6 +33,7 @@ export function fastImgsPreviewOpen(imgs: Array<string>, now?: string) {
     initialViewIndex: nowIndex,
     hide(event: CustomEvent) {
       warp.remove();
+      viewer.destroy();
     },
   });
   viewer.show();
