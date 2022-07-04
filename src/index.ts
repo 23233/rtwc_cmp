@@ -1,6 +1,6 @@
 // import "./base.css"
 
-export { sendClipboard, downloadFile } from './tools/file';
+export { downloadFile } from './tools/file';
 
 export type { CropImgAttr } from './images/crop/crop';
 export { default as DropRoundImg } from './images/crop/crop';
