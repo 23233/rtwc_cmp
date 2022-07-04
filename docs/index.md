@@ -5,6 +5,4 @@ hero:
   actions:
     - text: 快捷跳转
       link: /cmp
-
 ---
-

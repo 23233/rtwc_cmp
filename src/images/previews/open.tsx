@@ -1,6 +1,7 @@
 import React from 'react';
 import Viewer from 'viewerjs';
-import 'viewerjs/dist/viewer.min.css';
+
+// 按需加载吧 调用的时候
 
 // 通过dom打开
 export function fastImgPreviewOpen(src: string): any {
