@@ -8,9 +8,6 @@ export { default as DropRoundImg } from './images/crop/crop';
 export type { StatusCmpParams } from './animation/lottie/statusResult';
 export { default as StatusResult } from './animation/lottie/statusResult';
 
-// 距离相关
-export { getDistanceOfMetre, getDistance, parseToKm } from './tools/distance';
-
 // 载入图片相关
 export { fastImgPreviewOpen, fastImgsPreviewOpen } from './images/previews/open';
 
