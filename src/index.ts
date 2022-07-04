@@ -11,5 +11,8 @@ export { default as StatusResult } from './animation/lottie/statusResult';
 // 距离相关
 export { getDistanceOfMetre, getDistance, parseToKm } from './tools/distance';
 
+// 载入图片相关
+export { fastImgPreviewOpen, fastImgsPreviewOpen } from './images/previews/open';
+
 export { default as Cwal } from './swal/cwal';
 export { default as Toast } from './swal/toast';
